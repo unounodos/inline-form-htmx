@@ -11,6 +11,7 @@ class HelloController
     public function __invoke(Request $request)
     {
 //        dd($request->all());
-        return view('welcome', ['name' => $request->input('name')]);
+        return view('welcome', ['name' => $request->input('name')])
+            ->with('event', 'name:provided');
     }
 }

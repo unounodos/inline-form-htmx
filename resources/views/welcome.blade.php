@@ -30,10 +30,13 @@
         @endif
     </div>
 
-    <form hx-post="/hello" hx-target="#parent-div" hx-select="#parent-div">
+    <form method="POST" action="/hello"
+        hx-post="/hello" hx-target="#parent-div" hx-select="#parent-div">
         @csrf
         <input type="text" name="name" placeholder="Enter your name">
         <button type="submit">Submit</button>
     </form>
+
+
     </body>
 </html>
