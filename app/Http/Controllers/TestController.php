@@ -9,18 +9,18 @@ class TestController extends Controller
 {
     public function show()
     {
-        $user = auth()->user();
-        $isEditing = false;
-
-        return view('test.show', compact('user', 'isEditing'));
+        return view('test.show', [
+            'user' => auth()->user(),
+            'isEditing' => false,
+        ]);
     }
 
     public function edit()
     {
-        $user = auth()->user();
-        $isEditing = true;
-
-        return view('test.show', compact('user', 'isEditing'));
+        return view('test.show', [
+            'user' => auth()->user(),
+            'isEditing' => true,
+        ]);
     }
 
     public function update(Request $request)
@@ -32,6 +32,9 @@ class TestController extends Controller
         ]);
 
         if ($validator->fails()) {
+            // just return the full view with the errors
+            // if htmx is disabled, a page refresh is done, otherwise hx-select will pick
+            // the relevant content from the response
             return view('test.show')
                 ->with(['isEditing'=> true, 'user'=> auth()->user()])
                 ->withErrors($validator, 'updateProfile');
