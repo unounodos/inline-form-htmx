@@ -21,3 +21,9 @@ php artisan serve
 ### Login
 User: 'test@example.com'  
 Password 'password'
+
+### With/without htmx
+To try without htmx, comment out the htmx script in `test/show.blade.php`
+```
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/2.0.4/htmx.min.js"></script>--}}
+```
