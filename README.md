@@ -7,9 +7,17 @@ een target te updaten.
 Dit maakt gebruik van hx-select
 
 De view is welcome.blade.php en de controller HelloController
-
-Uit de response wordt alleen de html gepakt met id #parent-div en
-ook weer op die plek geinjecteerd.
-
-De timestamp verandert niet, hetgeen bewijst dat niet alles geswapt wordt
 # inline-form-htmx
+
+```bash
+git clone
+composer install
+npm install
+npm run dev
+php artisan migrate:fresh --seed
+php artisan serve
+```
+
+### Login
+User: 'test@example.com'  
+Password 'password'
