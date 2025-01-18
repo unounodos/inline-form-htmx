@@ -22,6 +22,11 @@
     <body>
 
     <h1>{{ now() }}</h1>
+    Session is: {{ Session::get('event') }}
+    @session('event')
+        {{ dd($event) }}
+    @endsession
+
     <div id="parent-div">
         @if (!isset($name))
             <h1>Hello Guest</h1>
