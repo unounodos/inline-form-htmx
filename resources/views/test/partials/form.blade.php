@@ -23,7 +23,7 @@
             <textarea name="bio"
                       class="w-full border rounded p-2"
                       rows="4">{{ old('bio', $user->bio) }}</textarea>
-            @error('bio')
+            @error('bio', 'updateProfile')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
