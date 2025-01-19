@@ -20,14 +20,6 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-//            'email' => [
-//                'required',
-//                'string',
-//                'lowercase',
-//                'email',
-//                'max:255',
-//                Rule::unique(User::class)->ignore($this->user()->id),
-//            ],
             'bio' => ['required', 'string', 'max:1000'],
             'location' => ['required', 'string', 'max:255'],
         ];
@@ -44,8 +36,9 @@ class ProfileUpdateRequest extends FormRequest
             ])
                 ->withErrors($validator);
 
+            // we have to use 200 status code for HTMX requests
             throw new HttpResponseException(
-                    response($view, 200)
+                    response($view, 200 )
             );
         }
 
