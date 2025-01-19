@@ -28,7 +28,6 @@ class ProfileUpdateRequest extends FormRequest
 
     protected function failedValidation(Validator $validator): void
     {
-//        dd($this->input());
         if ($this->header('HX-Request')) {
             // For HTMX requests, throw a new exception with the view
             $view = view('test.show', [
