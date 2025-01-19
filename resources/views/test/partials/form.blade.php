@@ -14,7 +14,7 @@
                    name="name"
                    value="{{ old('name', $user->name) }}"
                    class="w-full border rounded p-2">
-            @error('name', 'updateProfile')
+            @error('name')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
@@ -23,7 +23,7 @@
             <textarea name="bio"
                       class="w-full border rounded p-2"
                       rows="4">{{ old('bio', $user->bio) }}</textarea>
-            @error('bio', 'updateProfile')
+            @error('bio')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
@@ -33,7 +33,7 @@
                    name="location"
                    value="{{ old('location', $user->location) }}"
                    class="w-full border rounded p-2">
-            @error('location', 'updateProfile')
+            @error('location')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
