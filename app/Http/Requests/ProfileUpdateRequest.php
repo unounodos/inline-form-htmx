@@ -21,13 +21,14 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'bio' => ['required', 'string', 'max:1000'],
-            'location' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'min:3', 'max:255'],
         ];
     }
 
 
     protected function failedValidation(Validator $validator): void
     {
+//        dd($this->input());
         if ($this->header('HX-Request')) {
             // For HTMX requests, throw a new exception with the view
             $view = view('test.show', [
@@ -35,6 +36,8 @@ class ProfileUpdateRequest extends FormRequest
                 'user' => auth()->user(),
             ])
                 ->withErrors($validator);
+
+            $this->flash(); // flash the input values back to get the OLD value
 
             // we have to use 200 status code for HTMX requests
             throw new HttpResponseException(
