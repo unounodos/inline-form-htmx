@@ -25,6 +25,11 @@ class ProfileUpdateRequest extends FormRequest
         ];
     }
 
+    // TODO: check if we can implement default behaviour
+    // using the exception handler so we can skip this and rely
+    // on that behavour
+    // protected function handleValidationException(ValidationException $exception, $request)
+
 
     protected function failedValidation(Validator $validator): void
     {
