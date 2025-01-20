@@ -8,6 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class ProfileUpdateRequest extends FormRequest
 {
@@ -41,12 +42,13 @@ class ProfileUpdateRequest extends FormRequest
             ])
                 ->withErrors($validator);
 
-            $this->flash(); // flash the input values back to get the OLD value
+            // flash the input values back to get the OLD value
+            $this->flash();
 
             // we have to use 200 status code for HTMX requests
-            throw new HttpResponseException(
-                    response($view, 200 )
-            );
+            $response = response($view, 200);
+
+            throw new ValidationException($validator, $response);
         }
 
         // For regular requests, use the default behavior
